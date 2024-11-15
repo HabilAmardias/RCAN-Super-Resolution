@@ -9,11 +9,18 @@ transforms = v2.Compose([
     v2.Normalize(mean=[0.5,0.5,0.5],std=[0.5,0.5,0.5])
 ])
 
-def upscale_image(upload,
-                  model:RCAN):
-    
+def load_image(upload):
     file = np.asarray(bytearray(upload.read()),dtype=np.uint8) #convert to bytes
     image = cv2.imdecode(file,cv2.IMREAD_COLOR)
+    return image
+
+def exceed_resolution_threshold(image,threshold=350*350):
+    height, width = image.shape[:2]
+    return height * width > threshold
+
+def upscale_image(image,
+                  model:RCAN):
+    
     image = np.moveaxis(image,-1,0) #(H,W,C) -> (C,H,W)
     image = np.expand_dims(image, axis=0) #(C,H,W) -> (1,C,H,W)
     tensor = torch.tensor(image)
