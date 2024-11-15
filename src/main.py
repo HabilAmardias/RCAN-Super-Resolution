@@ -14,7 +14,7 @@ st.write('## RCAN Super Resolution')
 st.write("""This project implements a deep learning model based on RCAN (Residual Channel Attention Network) 
 for image super-resolution (4x upscale).""")
 st.write('*Note: this model is slow and still experimental.*')
-st.write('*Note: because of limited computation resource, only support image up 122500 pixels (height x width).*')
+st.write('*Note: because of limited computation resource, only support image up to 122500 pixels (height x width).*')
 
 st.image('static/concatenated.png',caption='Original vs Upscaled')
 
