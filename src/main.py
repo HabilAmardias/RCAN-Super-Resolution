@@ -7,7 +7,7 @@ st.set_page_config(layout="centered",
 
 MAX_SIZE = 200 * 1024 * 1024 #200 MB
 extensions = ["png","jpg","jpeg"]
-rcan = load_model('rcan1.pth')
+rcan = load_model('src/rcan1.pth')
 
 
 st.write('## RCAN Super Resolution')
