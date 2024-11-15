@@ -15,7 +15,7 @@ st.write("""This project implements a deep learning model based on RCAN (Residua
 for image super-resolution (4x upscale).""")
 st.write('*Note: this model is slow and still experimental*')
 
-st.image('../static/concatenated.png',caption='Original vs Upscaled')
+st.image('static/concatenated.png',caption='Original vs Upscaled')
 
 upload=st.file_uploader(
     "Upload an image",
