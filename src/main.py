@@ -5,7 +5,7 @@ import streamlit as st
 st.set_page_config(layout="centered", 
                    page_title="Image Upscaler")
 
-MAX_SIZE = 200 * 1024 * 1024 #200 MB
+MAX_SIZE =  1024 * 1024 #1 MB
 extensions = ["png","jpg","jpeg"]
 rcan = load_model('src/rcan1.pth')
 
