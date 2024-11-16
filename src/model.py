@@ -32,7 +32,7 @@ class RCAB(nn.Module):
         return h+x
 
 class RG(nn.Module):
-    def __init__(self,C,r,num_RCAB=10):
+    def __init__(self,C,r,num_RCAB=3):
         super().__init__()
         model = [RCAB(C,r) for i in range(num_RCAB)]
         model.append(nn.Conv2d(C,C,kernel_size=3,padding=1))
@@ -41,7 +41,7 @@ class RG(nn.Module):
         return x + self.model(x)
 
 class RiR(nn.Module):
-    def __init__(self,C,r,num_RG=5):
+    def __init__(self,C,r,num_RG=3):
         super().__init__()
         model = [RG(C,r) for i in range(num_RG)]
         model.append(nn.Conv2d(C,C,kernel_size=3,padding=1))
