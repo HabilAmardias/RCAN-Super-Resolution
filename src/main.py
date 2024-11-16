@@ -1,4 +1,5 @@
 from upscale_image import upscale_image, load_image, exceed_resolution_threshold
+from display_upscaled import display_upscaled
 from load_model import load_model
 import streamlit as st
 
@@ -33,11 +34,17 @@ if upload:
         if exceed_resolution_threshold(image):
             st.error('Image resolution is too large, please upload an smaller image')
         else:
-            out_bytes = upscale_image(image,rcan)
+            out_bytes, out_image = upscale_image(image,rcan)
             filename:str = upload.name
+
             for ext in extensions:
                 if filename.endswith(ext):
                     filename = filename.replace(ext,'')
+            
+            st.image(
+                display_upscaled(image,out_image),
+                channels="BGR"
+            )
             st.download_button(
                 'Download the Upscaled Image',
                 data=out_bytes,

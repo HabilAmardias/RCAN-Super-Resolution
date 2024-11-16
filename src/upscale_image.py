@@ -31,4 +31,4 @@ def upscale_image(image,
     pred = np.clip(pred,0,255).astype(np.uint8) #convert to unsigned 8-bit integer
     _, encoded = cv2.imencode('.png',pred)
 
-    return encoded.tobytes()
+    return encoded.tobytes(), pred
